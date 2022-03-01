@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class TerminalServer {
+public class TerminalServer {
 }
