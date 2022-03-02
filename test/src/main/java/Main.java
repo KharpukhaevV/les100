@@ -3,6 +3,6 @@ public class Main {
         User user1 = new User("Ivanov", "Ivan", "Ivanovich", "123_456_678", 123L, 111);
         TerminalImpl terminal = new TerminalImpl();
 
-        terminal.Transfer(user1, user1.getAccountNumber(), 123L);
+        terminal.Transfer(user1, "321_123_222", 124L);
     }
 }

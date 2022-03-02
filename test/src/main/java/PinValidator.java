@@ -30,7 +30,6 @@ public class PinValidator {
             catch (IOException | NumberFormatException e) {
                 System.out.println("Некоректный PIN");
             }
-
         }
         return result;
     }
