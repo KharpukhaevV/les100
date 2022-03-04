@@ -1,14 +1,9 @@
-import Exceptions.FrodMonitorException;
+import exceptions.FrodMonitorException;
+import exceptions.ValidationFailedException;
 
 public class FrodMonitor {
-    public static boolean monitoring(User user, String recipient, long sum) {
-        try {
-            if (sum > 50000) throw new FrodMonitorException();
-            return true;
-        }
-        catch (FrodMonitorException e) {
-            e.printStackTrace();
-            return false;
-        }
+    protected void monitoring(PinValidator validator, User user, String recipient, long sum) throws FrodMonitorException, ValidationFailedException {
+        if (!validator.isSuccess()) throw new ValidationFailedException("Ошибка валидации");
+        if (sum > 50000) throw new FrodMonitorException();
     }
 }

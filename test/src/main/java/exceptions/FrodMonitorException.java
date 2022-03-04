@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class FrodMonitorException extends Exception{
     public FrodMonitorException() {

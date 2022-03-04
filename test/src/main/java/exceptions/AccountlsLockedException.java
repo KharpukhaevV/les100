@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class AccountlsLockedException extends Exception{
     public AccountlsLockedException() {

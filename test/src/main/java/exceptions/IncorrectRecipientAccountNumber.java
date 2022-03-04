@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class IncorrectRecipientAccountNumber extends Exception{
     public IncorrectRecipientAccountNumber() {

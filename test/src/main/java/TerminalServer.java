@@ -1,18 +1,14 @@
-import Exceptions.IncorrectRecipientAccountNumber;
-import Exceptions.InsufficientFundsException;
-import Exceptions.ServerConnectionLostException;
+import exceptions.IncorrectRecipientAccountNumber;
+import exceptions.InsufficientFundsException;
+import exceptions.ServerConnectionLostException;
+import exceptions.ValidationFailedException;
 
 public class TerminalServer {
-    public static boolean serverOperation(User user, String recipient, long sum) {
+    protected void serverOperation(PinValidator validator, User user, String recipient, long sum) throws ServerConnectionLostException, IncorrectRecipientAccountNumber, InsufficientFundsException, ValidationFailedException {
+        if (!validator.isSuccess()) throw new ValidationFailedException("Ошибка валидации.");
         boolean serverConnection = true;
-        try {
-            if (!serverConnection) throw new ServerConnectionLostException();
-            if (user.getAccountNumber().equals(recipient)) throw new IncorrectRecipientAccountNumber();
-            if (user.getBalance() < sum) throw new InsufficientFundsException();
-            return true;
-        } catch (IncorrectRecipientAccountNumber | InsufficientFundsException | ServerConnectionLostException e) {
-            e.printStackTrace();
-            return false;
-        }
+        if (!serverConnection) throw new ServerConnectionLostException();
+        if (user.getAccountNumber().equals(recipient)) throw new IncorrectRecipientAccountNumber();
+        if (user.getBalance() < sum) throw new InsufficientFundsException();
     }
 }
